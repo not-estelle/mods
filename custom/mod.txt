@@ -33,10 +33,6 @@
       "hook_id" : "lib/units/beings/player/states/playerstandard",
       "script_path" : "crosshair/playerstandard.lua"
     },
-    {
-      "hook_id" : "lib/managers/weaponfactorymanager",
-      "script_path" : "weaponfactorymanager_203.lua"
-    },
 
     {
       "hook_id" : "lib/managers/hud/hudlootscreen",

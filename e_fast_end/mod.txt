@@ -1,0 +1,26 @@
+{
+  "name": "E: fast end",
+  "description": "Skip boring end screens.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id" : "lib/managers/hud/hudlootscreen",
+      "script_path" : "hook/hudlootscreen.lua"
+    },
+    {
+      "hook_id" : "lib/managers/hud/hudstageendscreen",
+      "script_path" : "hook/hudstageendscreen.lua"
+    },
+    {
+      "hook_id" : "lib/managers/menu/lootdropscreengui",
+      "script_path" : "hook/lootdropscreengui.lua"
+    },
+    {
+      "hook_id" : "lib/states/missionendstate",
+      "script_path" : "hook/missionendstate.lua"
+    }
+  ],
+  "blt_version": 2
+}

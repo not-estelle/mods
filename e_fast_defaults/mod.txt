@@ -1,0 +1,18 @@
+{
+  "name": "E: fast defaults",
+  "description": "Do the right thing automatically.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id": "lib/managers/localizationmanager",
+      "script_path": "hook/base.lua"
+    },
+    {
+      "hook_id" : "lib/managers/menumanager",
+      "script_path" : "hook/menumanager.lua"
+    }
+  ],
+  "blt_version": 2
+}

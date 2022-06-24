@@ -1,0 +1,14 @@
+{
+  "name": "E: ping",
+  "description": "You say 'How fast?'",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id" : "lib/managers/localizationmanager",
+      "script_path" : "hook/base.lua"
+    }
+  ],
+  "blt_version": 2
+}

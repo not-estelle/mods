@@ -1,0 +1,18 @@
+{
+  "name": "E: no blackscreen",
+  "description": "No fading. At all. Ever.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id" : "lib/managers/localizationmanager",
+      "script_path": "hook/tweakdata.lua"
+    },
+    {
+      "hook_id" : "lib/managers/hudmanager",
+      "script_path": "hook/hudblackscreen.lua"
+    }
+  ],
+  "blt_version": 2
+}

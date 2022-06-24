@@ -1,0 +1,26 @@
+{
+  "name": "E: fast restart",
+  "description": "Retry ASAP.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id": "lib/managers/menumanager",
+      "script_path": "hook/menumanager.lua"
+    }
+  ],
+  "blt_version": 2,
+
+  "keybinds" : [
+    {
+      "keybind_id" : "E_fast_restart_bind",
+      "name" : "Restart Heist",
+      "description" : "Restart the current heist",
+      "script_path" : "keybind/restart.lua",
+      "run_in_menu" : false,
+      "run_in_game" : true,
+      "localized" : false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "E: no red lasers",
+  "description": "Troll no more, sniper troll.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id" : "lib/units/weapons/weaponlaser",
+      "script_path": "hook/weaponlaser.lua"
+    }
+  ],
+  "blt_version": 2
+}

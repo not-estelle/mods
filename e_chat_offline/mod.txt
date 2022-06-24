@@ -1,0 +1,18 @@
+{
+  "name": "E: chat offline",
+  "description": "Talk to yourself.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id": "lib/managers/menu/menucomponentmanager",
+      "script_path": "hook/menucomponentmanager.lua"
+    },
+    {
+      "hook_id": "lib/managers/menumanager",
+      "script_path": "hook/menumanager.lua"
+    }
+  ],
+  "blt_version": 2
+}

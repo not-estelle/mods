@@ -1,0 +1,14 @@
+{
+  "name": "E: no slomo",
+  "description": "Experience life at full speed.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id" : "lib/tweak_data/timespeedeffecttweakdata",
+      "script_path" : "hook/timespeedeffecttweakdata.lua"
+    }
+  ],
+  "blt_version": 2
+}

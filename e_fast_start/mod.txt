@@ -1,0 +1,14 @@
+{
+  "name": "E: fast start",
+  "description": "Skip two unnecessary seconds.",
+  "author": "Estelle",
+  "contact": "nobody@universe",
+  "version": "1",
+  "hooks": [
+    {
+      "hook_id": "lib/states/ingamewaitingforplayers",
+      "script_path": "hook/ingamewaitingforplayers.lua"
+    }
+  ],
+  "blt_version": 2
+}

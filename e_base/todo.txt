@@ -1,0 +1,275 @@
+skip confirmation (buy all, buy contract)
+preplan presets
+ping meter
+escape in chat in lobby prompts exit
+show game settings as client
+custom steam presence message
+teleport player to you (for force-ending heists)
+repeated message censor
+gone in X seconds
+in-game chat scrolling
+
+icons:
+- equipment_medallion (fancy fleur de lis)
+- equipment_documents (document w/ dogear in folder)
+- equipment_files (tiled document w/ picture, lines of text, dogear)
+- equipment_notepad (spiral-bound notebook w/ 3 lines of text)
+- equipment_elevator_key (key)
+  - equipment_chavez_key (key)
+  - wp_key (key)
+- equipment_flammable (fireball in diamond)
+  - equipment_thermite (fireball in diamond)
+- equipment_sleeping_gas (zzz in cloud)
+- equipment_drill (hand drill)
+  - equipment_bfd_tool (hand drill)
+  - wp_drill (hand drill)
+  - pd2_drill (hand drill)
+- equipment_tape (tilted rectangle / ticket stub)
+- equipment_tape_fingerprint (fingerprint in tilted rectangle)
+- equipment_timer (alarm clock)
+- equipment_bank_manager_key (keycard)
+- equipment_hand (open hand from rear)
+- ai_stopped (upright open palm, stop hand)
+- pd2_generic_interact (hand w/ index and thumb extended from rear)
+- equipment_born_tool (wrench)
+- pd2_fix (wrench)
+- equipment_mayan_gold (gold bar)
+  - equipment_policebadge (star in badge outline)
+  - equipment_soda (soda bottle w/ label)
+  - equipment_bottle (beer bottle w/ label)
+  - equipment_evidence (fbi in evidence box)
+  - equipment_usb_with_data
+  - equipment_usb_no_data
+  - equipment_blueprint
+  - equipment_electrical (horizontal line w/ lightning bolt in center)
+  - equipment_ticket (P in tilted rectangle / parking garage ticket)
+  - equipment_barcode
+  - pd2_generic_saw (circular saw blade)
+  - XXX equipment_empty_cooling_bottle (ipad tablet)
+  - XXX equipment_cooling_bottle (hard drive)
+  - equipment_globe
+  - equipment_syringe (partially full syringe)
+  - equipment_chainsaw
+  - equipment_chimichanga
+  - equipment_fertilizer
+  - equipment_plates
+  - equipment_boltcutter (shears cutting wire)
+  - equipment_scythe
+  - equipment_harddrive
+  - equipment_blow_torch
+  - equipment_drillfix (wrench)
+  - equipment_paper_roll
+  - equipment_printer_ink (upturned ink bottle w/ drips)
+  - equipment_fire_extinguisher
+  - wp_scrubs (shirt)
+  - equipment_gasoline (fireball on gascan)
+    - wp_can (fireball on gascan)
+  - equipment_glasscutter
+  - equipment_stapler
+  - equipment_cutter (circular saw)
+    - equipment_saw (circular saw)
+  - equipment_rfid_tag_02 (keychain tag w/ radiating arcs)
+  - equipment_chrome_mask
+  - equipment_winch_hook
+  - equipment_cleaning_product (spray bottle w/ spray lines, label)
+  - equipment_liquid_nitrogen_canister (snowflake in gas tank)
+  - equipment_gas_canister (fireball in small gas tank)
+  - pd2_wirecutter
+  - pd2_chainsaw
+  - equipment_crowbar
+    - wp_crowbar
+  - pd2_water_tap (dripping faucet)
+  - wp_watersupply (faucet w/out drips)
+  - wp_server (serve w/ unplugged cord)
+  - wp_planks (2 wooden planks)
+  - equipment_planks (3 wooden planks)
+  - frag_grenade (frag grenade)
+  - equipment_bg (frag grenade)
+  - electric_grenade (????)
+  - minions_converted (criminal holding converted cop's shoulder)
+
+  - tag_team (walkie-talkie/radio)
+  - damage_control (hip flask)
+  - dada_com (matryoshka doll)
+  - chico_injector (kingpin syringe)
+  - hobby_knife (throwing knife)
+  - concussion_grenade (flashbang)
+  - throwing_axe
+  - jav_projectile (javelin)
+  - molotov_grenade
+  - smoke_screen_grenade (grenade in smoke cloud)
+  - four_projectile (six-pointed throwing star)
+  - ace_projectile (space in playing card)
+  - fir_grenade (smoke grenade)
+  - dynamite_grenade (dynamite bundle on side w/ fuse)
+
+  - pd2_bodybag (tilted body bag case, skull in tilted briefcase)
+
+  - equipment_ecm_jammer
+  - equipment_trip_mine
+  - equipment_c4
+    - pd2_c4
+  - equipment_ammo_bag
+  - equipment_body_bag (skull in briefcase)
+    - equipment_bodybags_bag (skull in briefcase)
+  - equipment_armor_kit
+  - equipment_doctor_bag
+  - equipment_first_aid_kit
+  - equipment_sentry_silent
+  - equipment_sentry
+  - equipment_cable_ties
+
+  - equipment_caustic_soda (Cs in tilted square)
+  - equipment_hydrogen_chloride (Hcl in tilted square)
+  - equipment_muriatic_acid (Mu in tilted square)
+
+  - equipment_compounda (a in erlenmeyer flask)
+  - equipment_compoundb (b in erlenmeyer flask)
+  - equipment_compoundc (c in erlenmeyer flask)
+  - equipment_compoundd (d in erlenmeyer flask)
+  - equipment_compoundok (exclamation point in erlenmeyer flask)
+
+- skill_1 (plus sign in heart in hexagon)
+- skill_2 (plus sign in shield in hexagon)
+- skill_3 (sprint in hexagon)
+- skill_4 (sprint w/ armor in hexagon)
+- skill_5 (bandage in heart in hexagon)
+- skill_6 (ghost in hexagon)
+- skill_7 (grenade in hexagon)
+- skill_8 (cartridges w/ circular arrow in hexagon)
+- csb_lives (heart w/ halo in hexagon)
+- csb_crouch (crouch in hexagon)
+- csb_reload (cartridges w/ circular arrow in hexagon)
+- csb_melee (superhero in hexagon)
+- csb_throwables (grenade in hexagon)
+- csb_locks (unlocked lock in hexagon)
+- csb_bodybags (body bag case in hexagon)
+- csb_deployables (equipment case in hexagon)
+- csb_explosion (criminal w/ radiating lines in hexagon)
+- csb_switch (handgun w/ 2 circular arrows in hexagon)
+- csb_absorb (shield in circle in hexagon)
+- csb_armor (plus sign in shield in hexagon)
+- csb_stamina (sprint in hexagon)
+- csb_lifesteal (bandage in heart and cartridge in hexagon)
+- csb_pagers (walkie talkie / radio w/ circular arrow in hexagon)
+- csb_ammo (cartridges in ammo box and cartridge w/ plus sign in hexagon)
+
+- Other_H_None_SpendMoney (money bundle w/ down arrow)
+- Other_H_Any_Dont (stop sign / stop in octagon)
+
+- wp_standard (exclamation point)
+  - pd2_generic_look (exclamation point)
+- pd2_question (question mark)
+- pd2_talk (speech bubble w/ exclamation point)
+  - wp_talk (speech bubble w/ exclamation point)
+- pd2_door (door ajar)
+  - wp_door (door ajar)
+- pd2_goto (downward arrow into circle)
+- pd2_loot (briefcase)
+- equipment_stash_server (briefcase)
+- equipment_briefcase (briefcase)
+- bag_icon (larger briefcase)
+- pd2_melee (clenched fist)
+- pd2_kill (reticle)
+  - wp_target (reticle)
+- pd2_defend (shield outline)
+- pd2_escape (exit symbol)
+  - wp_exit (exit symbol)
+- mugshot_downed (asterisk)
+  - wp_revive
+- milestone_trophy (trophy)
+- pd2_computer (monitor atop horizontal computer)
+  - wp_hack (monitor atop horizontal computer)
+- pd2_power (lightning bolt)
+  - wp_powersupply (lightning bolt)
+- mugshot_electrified (lightning bolt w/ arrow)
+- mugshot_swansong (skull w/ wings)
+- pd2_phone (wireless phone receiver)
+  - wp_phone (wireless phone receiver)
+- none_icon (dim X)
+- icon_addon (plus sign)
+  - icon_buy (plus sign)
+- pd2_lootdrop (briefcase in dotted square outline)
+- pd2_methlab (partially filled erlenmeyer flask)
+  - ps3buttonhighlight (filled circle)
+  - wp_winch (small arch)
+  - pagers_used (walkie talkie/radio)
+  - pd2_car (card front view)
+  - pd2_ladder (ladder w/ 4 rungs)
+  - wp_detected (orange exclamation point)
+  - wp_suspicious (blue question mark)
+  - wp_vial
+  - equipment_bloodvial (capped tilted sample vial)
+  - equipment_bloodvialok (capped tilted sample vial w/ check mark)
+  - wp_bag (duffel bag)
+  - wp_trade (hostage)
+  - wp_escort (criminal holding gun to hostage)
+  - wp_rescue (handcuffs w/ one cuff unlocked)
+  - wp_powercord (unplugged power cord)
+  - wp_powerbutton (1/0 power button)
+  - icon_repair (wrench, lo res)
+  - icon_locked (tilted padlock, lo res)
+  - mugshot_talk (speech bubble, lo res)
+  - mugshot_in_custody (jail cell)
+  - jukebox_playing_icon (speaker w/ sound, lo res)
+  - jukebox_mute_icon (speaker w/ sound, slash thru, lo res)
+  - downcard_overkill_deck (playing card back)
+
+- icon_equipped (right-pointing triangle)
+- scroll_up (two up-pointing triangles)
+- scroll_dn (two down-pointing triangles)
+
+- risk_swat (hard skull)
+- risk_fbi (very hard skull)
+- risk_death_squad (overkill skull)
+- risk_easy_wish (mayhem skull)
+  - risk_pd2 (mayhem skull)
+- risk_murder_squad (death wish skull)
+- risk_sm_wish (death sentence skull)
+
+- infamy_icon_1 (spade)
+- infamy_icon_2 (heart)
+- infamy_icon_3 (club)
+- infamy_icon_4 (diamond)
+- infamy_icon_5 (fleur de lis)
+
+- sidebar_broker (glowing document w/ dogear, picture, lines of text)
+- sidebar_question (glowing map w/ question mark)
+- sidebar_mutators (glowing double helix)
+- sidebar_filters (3 glowing slider controls)
+- sidebar_quickplay (glowing right-pointing triangle)
+- sidebar_side_jobs (glowing document w/ dogear, checklist)
+- sidebar_safehouse (glowing house)
+- sidebar_casino (3 glowing rounded rectangles / playing cards)
+- sidebar_gage (glowing serif G)
+- sidebar_codex (glowing open book)
+- sidebar_basics (glowing graduation cap)
+- sidebar_crimespree (glowing skull in 3 chevrons)
+- sidebar_expand (glowing rectangle in dotted square outline)
+
+- mouse_left_click
+- mouse_right_click
+- mouse_scroll_wheel
+
+- icon_circlefill[0-16] (pie circle filling, lo res)
+
+colors:
+- resource skill_color (light cyan)
+  - regular_color (dark light cyan)
+  - ghost_color (medium light cyan)
+- risk (gold)
+- heat_warm_color, event_color (orange)
+- important_1 heat_cold_color (red) _2 (dim)
+- friend (green)
+
+- stat_maxed, infamous_color (neon pink)
+- skirmish_color (neon orange)
+- one_down (neon red)
+- crime_spree_risk (neon yellow)
+
+- crimenet_lines (slate gray)
+- infamy_color (pale pink)
+- stats_positive (pale green)
+- stats_mods (pale yellow)
+- mutators_color_text (pale purple)
+- button_stage_2 (dim cyan)

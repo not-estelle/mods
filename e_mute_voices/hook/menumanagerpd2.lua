@@ -1,4 +1,4 @@
-Hooks:PostHook(InspectPlayerInitiator, "modify_node", "E_mute_voices_InspectPlayerInitiator_modify_node", function(self, node, inspect_peer)
+E.mute_voices:post_hook(InspectPlayerInitiator, "modify_node", function(self, node, inspect_peer)
 
   local is_local_peer = inspect_peer == managers.network:session():local_peer()
   if is_local_peer then return end

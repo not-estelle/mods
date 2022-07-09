@@ -1,13 +1,14 @@
-if E.anticheat then return end
 E:mod("anticheat", {})
 
 E.anticheat.good_mods = {
   "cheater kicker",
+  "cheater kicker plus",
   "hacker cancer",
   "hacker pecm fix",
 }
 E.anticheat.bad_mods = {
   "pirate perfection",
+  "rngmodifier",
   "p3dhack",
   "p3dhack free",
   "dlc unlocker",

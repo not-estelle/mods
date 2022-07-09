@@ -1,4 +1,4 @@
--- Hooks:Add(NetworkPeer, "set_synched", "E.anticheat NetworkPeer.set_synched", function(self, state)
+-- E.anticheat:post_hook(NetworkPeer, "set_synched", function(self, state)
 --   if not state then return end
 --   E:log("anticheat:", self:id(), "synched")
 --   local is_local_peer = self == managers.network:session():local_peer()
@@ -10,7 +10,7 @@
 --     E.anticheat:check_peer(self)
 --   end
 -- end)
--- Hooks:Add(NetworkPeer, "set_synched_soft", "E.anticheat NetworkPeer.set_synched_soft", function(self, state)
+-- E.anticheat:post_hook(NetworkPeer, "set_synched_soft", function(self, state)
 --   if not state then return end
 --   E:log("anticheat:", self:id(), "synched_soft")
 --   local is_local_peer = self == managers.network:session():local_peer()

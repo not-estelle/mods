@@ -1,4 +1,4 @@
-Hooks:PostHook(MissionBriefingGui, "init", "E_force_start_MissionBriefingGui_init", function(self)
+E.force_start:post_hook(MissionBriefingGui, "init", function(self)
 
   self._force_start_button = self._panel:text({
     vertical = "center",
@@ -23,7 +23,7 @@ Hooks:PostHook(MissionBriefingGui, "init", "E_force_start_MissionBriefingGui_ini
   self._force_start_confirm = false
 end)
 
-Hooks:PostHook(MissionBriefingGui, "mouse_pressed", "E_force_start_MissionBriefingGui_mouse_pressed", function(self, button, x, y)
+E.force_start:post_hook(MissionBriefingGui, "mouse_pressed", function(self, button, x, y)
 
   if not alive(self._panel) or not alive(self._fullscreen_panel) or not self._enabled then
     return
@@ -48,7 +48,7 @@ Hooks:PostHook(MissionBriefingGui, "mouse_pressed", "E_force_start_MissionBriefi
   end
 end)
 
-Hooks:PostHook(MissionBriefingGui, "mouse_moved", "E_force_start_MissionBriefingGui_mouse_moved", function(self, x, y)
+E.force_start:post_hook(MissionBriefingGui, "mouse_moved", function(self, x, y)
 
   if not alive(self._panel) or not alive(self._fullscreen_panel) or not self._enabled or self._displaying_asset or game_state_machine:current_state().blackscreen_started and game_state_machine:current_state():blackscreen_started() then
     return

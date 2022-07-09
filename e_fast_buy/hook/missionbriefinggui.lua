@@ -8,7 +8,7 @@ function AssetsItem:open_assets_buy_all()
   end
 end
 
-Hooks:PostHook(MissionBriefingGui, "create_asset_tab", "E.fast_buy MissingBriefingGui:create_asset_tab", function(self)
+E.fast_buy:post_hook(MissionBriefingGui, "create_asset_tab", function(self)
   -- auto-buy all
   if E:get("fast_buy_assets_auto") and self._assets_item then
     self._assets_item:open_assets_buy_all()

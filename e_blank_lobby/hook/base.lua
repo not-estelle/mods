@@ -1,7 +1,17 @@
-E:mod("blank_lobby", {})
-
-Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit E.blank_lobby", function(loc)
-  loc:add_localized_strings({
+E:mod("blank_lobby", {
+  localize = {
     E_blank_lobby_create_name = "Create lobby",
-  })
-end)
+  },
+})
+
+for i, item in ipairs(tweak_data.gui.crime_net.sidebar) do
+  if item.name_id == "menu_cn_premium_buy" then
+    table.insert(tweak_data.gui.crime_net.sidebar, i + 1, {
+      visible_callback = "clbk_visible_multiplayer",
+      name_id = "E_blank_lobby_create_name",
+      icon = "icon_addon",
+      callback = "E_blank_lobby_create",
+    })
+    break
+  end
+end

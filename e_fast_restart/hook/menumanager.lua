@@ -1,4 +1,4 @@
-Hooks:PreHook(MenuCallbackHandler, "restart_level", "E_fast_restart_MenuCallbackHandler_restart_level", function()
+E.fast_restart:pre_hook(MenuCallbackHandler, "restart_level", function()
   -- instantly restart (if we are host)
   tweak_data.voting.restart_delay = 0
 end)

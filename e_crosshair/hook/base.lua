@@ -59,24 +59,25 @@ E:mod("crosshair", {
       step = 1,
     },
   },
+  localize = {
+    E_crosshair_options = "E: crosshair",
+    E_crosshair_options_help = "Customize the appearance of the crosshair.",
+    E_option_crosshair_offset = "Crosshair offset",
+    E_option_crosshair_offset_help = "Offset in pixels of the crosshair.",
+    E_option_crosshair_size = "Crosshair size",
+    E_option_crosshair_size_help = "Size in pixels of the crosshair radius.",
+    E_option_crosshair_thickness = "Crosshair thickness",
+    E_option_crosshair_thickness_help = "Size in pixels of the crosshair thickness.",
+    E_option_crosshair_alpha = "Crosshair opacity",
+    E_option_crosshair_alpha_help = "",
+    E_option_crosshair_hue = "Crosshair hue",
+    E_option_crosshair_hue_help = "",
+    E_option_crosshair_sat = "Crosshair saturation",
+    E_option_crosshair_sat_help = "",
+    E_option_crosshair_val = "Crosshair value",
+    E_option_crosshair_val_help = "",
+  },
 })
-
-Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit E.crosshair", function(loc)
-  loc:add_localized_strings({
-    E_crosshair_menu_name = "E: crosshair",
-    E_crosshair_menu_desc = "Customize the appearance of the crosshair.",
-    E_crosshair_offset_name = "Crosshair offset",
-    E_crosshair_offset_desc = "Offset in pixels of the crosshair.",
-    E_crosshair_size_name = "Crosshair size",
-    E_crosshair_size_desc = "Size in pixels of the crosshair radius.",
-    E_crosshair_thickness_name = "Crosshair thickness",
-    E_crosshair_thickness_desc = "Size in pixels of the crosshair thickness.",
-    E_crosshair_alpha_name = "Crosshair opacity",
-    E_crosshair_hue_name = "Crosshair hue",
-    E_crosshair_sat_name = "Crosshair saturation",
-    E_crosshair_val_name = "Crosshair value",
-  })
-end)
 
 function E.crosshair:color()
   if not self._color then

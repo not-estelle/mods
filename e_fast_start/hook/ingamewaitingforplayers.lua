@@ -1,4 +1,4 @@
-Hooks:PostHook(IngameWaitingForPlayersState, "update", "E_fast_start_IngameWaitingForPlayersState_update", function(self, t, dt)
+E.fast_start:post_hook(IngameWaitingForPlayersState, "update", function(self, t, dt)
   if self._delay_start_t then
     self._delay_start_t = t - 1
   end

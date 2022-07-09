@@ -1,5 +1,4 @@
-Hooks:PostHook(PlayerStandard, "update", "E.crosshair PlayerStandard:update", function( self , t , dt )
-
+E.crosshair:post_hook(PlayerStandard, "update", function(self, t, dt)
 	managers.hud:set_crosshair_visible(not self:_interacting())
 
 	if self._fwd_ray and self._fwd_ray.unit then

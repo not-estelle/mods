@@ -1,13 +1,22 @@
-skip confirmation (buy all, buy contract)
 preplan presets
-ping meter
+show ping in briefing
 escape in chat in lobby prompts exit
-show game settings as client
+chat wheel
+blue body bag contour
+different fak uppers contour
+auto ready
 custom steam presence message
-teleport player to you (for force-ending heists)
 repeated message censor
 gone in X seconds
-in-game chat scrolling
+more profiles
+auto turn laser on
+rejoin lobby / join player's lobby
+election day hack counter
+zero drill time after npcs all dead, ecms not active
+filter username special chars (nickelo)
+chat scroll reset to bottom when fading
+
+teleport player to you (for force-ending heists)
 
 icons:
 - equipment_medallion (fancy fleur de lis)

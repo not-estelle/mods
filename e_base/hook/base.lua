@@ -1,7 +1,6 @@
 if _G.E then return end
 
 _G.E = {}
-E._menu_id = "E_menu_id"
 E._path = ModPath
 E._save_path = SavePath .. "E_data.txt"
 E._data = {}
@@ -63,7 +62,7 @@ Hooks:RegisterHook("E_change")
 function E:mod(name, opts)
   local mod = {
     name = name,
-    _menu_id = "E_" .. name .. "_menu_id",
+    options_menu_name = "E_" .. name .. "_options",
   }
   local prefix = name .. "_"
   function mod:set_option(k, value)
@@ -71,6 +70,28 @@ function E:mod(name, opts)
   end
   function mod:get(k, default)
     return E:get(prefix .. k, default)
+  end
+  local hook_prefix = "E." .. name .. " "
+  function mod:post_hook(obj, key, hook)
+    Hooks:PostHook(obj, key, hook_prefix .. tostring(obj) .. " post " .. key, hook)
+  end
+  function mod:pre_hook(obj, key, hook)
+    Hooks:PostHook(obj, key, hook_prefix .. tostring(obj) .. " pre " .. key, hook)
+  end
+  function mod:hook(key, hook)
+    Hooks:Add(key, hook_prefix .. key, hook)
+  end
+  function mod:localize(strings)
+    if not mod.localize_strings then
+      mod.localize_strings = {}
+      Hooks:Add("LocalizationManagerPostInit", hook_prefix .. "localize", function(loc)
+        loc:add_localized_strings(mod.localize_strings)
+        mod.localize_strings = nil
+      end)
+    end
+    for k, v in pairs(strings) do
+      mod.localize_strings[k] = v
+    end
   end
   E[name] = mod
   table.insert(E._mods, mod)
@@ -87,7 +108,12 @@ function E:mod(name, opts)
       menu = opts.options_menu,
     })
   end
+  if opts.localize then
+    mod:localize(opts.localize)
+  end
 end
+
+E:mod("base")
 
 E.log_level = {
   log = "LOG",
@@ -143,19 +169,78 @@ function E.menu:index_after_item(node, after)
     end
   end
 end
-function E.menu:create_toggle(node, data)
-  error "todo"
+function E.menu:create_back_button(node)
+  return node:create_item(nil, {
+    visible_callback = "is_pc_controller",
+    name = "back",
+    text_id = "menu_back",
+    back = true,
+    previous_node = true,
+  })
 end
-function E.menu:create_divider(node, data)
+function E.menu:create_button(node, params)
+  return node:create_item(nil, params)
+end
+function E.menu:create_multi_choice(node, options, params)
+  local data = {
+    type = "MenuItemMultiChoice",
+  }
+  for _, pair in ipairs(options) do
+    local opt = pair[3] or {}
+    opt._meta = "option"
+    opt.text_id = pair[2]
+    opt.value = pair[1]
+    table.insert(data, opt)
+  end
+  return node:create_item(data, params or {})
+end
+function E.menu:create_toggle(node, params)
+  return node:create_item({
+    type = "CoreMenuItemToggle.ItemToggle",
+    {
+      _meta = "option",
+      icon = "guis/textures/menu_tickbox",
+      value = "on",
+      x = 24,
+      y = 0,
+      w = 24,
+      h = 24,
+      s_icon = "guis/textures/menu_tickbox",
+      s_x = 24,
+      s_y = 24,
+      s_w = 24,
+      s_h = 24
+    },
+    {
+      _meta = "option",
+      icon = "guis/textures/menu_tickbox",
+      value = "off",
+      x = 0,
+      y = 0,
+      w = 24,
+      h = 24,
+      s_icon = "guis/textures/menu_tickbox",
+      s_x = 0,
+      s_y = 24,
+      s_w = 24,
+      s_h = 24
+    }
+  }, params or {})
+end
+function E.menu:create_divider(node, params)
   return node:create_item({
     type = "MenuItemDivider"
-  }, {
-    name = "divider_" .. data.id,
-    no_text = not data.text_id,
-    text_id = data.text_id,
-    size = data.size or 8,
-    color = data.color,
-  })
+  }, params or {})
+end
+function E.menu:create_slider(node, params)
+  return node:create_item({
+    type = "CoreMenuItemSlider.ItemSlider",
+    -- show_value = params.show_value,
+    -- min = params.min,
+    -- max = params.max,
+    -- step = params.step,
+    -- show_value = params.show_value,
+  }, params)
 end
 
 E.commands = {
@@ -291,6 +376,8 @@ function E.commands:process(message)
   end
 end
 function E.commands:max_lines()
+  local hc = game_state_machine:verify_game_state(GameStateFilters.any_ingame) and managers.hud._hud_chat
+  if hc then return HUDChat.max_lines end
   local mm = managers.menu_component
   if not mm then return 15 end
   if mm._game_chat_gui then
@@ -411,13 +498,7 @@ function E.rich_string:stringify_shallow(x, pretty)
   end
 end
 
-Hooks:Add("MenuManagerSetupCustomMenus", "MenuManagerSetupCustomMenus E.crosshair", function(menu_manager, nodes)
-  for _,info in ipairs(E._options_menus) do
-    MenuHelper:NewMenu(info.mod._menu_id)
-  end
-end)
-
-function E:_kv_pairs(list)
+function E.base:_kv_pairs(list)
   local keys = {}
   local values = {}
   for _,pair in ipairs(list) do
@@ -426,95 +507,127 @@ function E:_kv_pairs(list)
   end
   return keys, values
 end
-Hooks:Add("MenuManagerPopulateCustomMenus", "MenuManagerPopulateCustomMenus E.crosshair", function(menu_manager, nodes)
-  for _,info in ipairs(E._options_menus) do
-    local len = #info.menu
+E.base:hook("MenuManagerPostInitialize", function()
+  local menu_main = managers.menu:get_menu("menu_main")
+  if menu_main then
+    E.base:_create_menu(menu_main)
+  end
+  local menu_pause = managers.menu:get_menu("menu_pause")
+  if menu_pause then
+    E.base:_create_menu(menu_pause)
+  end
+end)
+function E.base:_create_menu(menu)
+  local nodes = menu.data._nodes
+
+  local mod_options_node = nodes.blt_options
+  if mod_options_node then
+    if #E._options_menus > 0 then
+      mod_options_node:add_item(E.menu:create_divider(mod_options_node, {
+        name = "E_mod_options_divider",
+        size = 8,
+        no_text = true,
+      }))
+    end
+    for _, info in ipairs(E._options_menus) do
+      local text_id = "E_" .. info.mod.name .. "_options"
+      local help_id = "E_" .. info.mod.name .. "_options_help"
+
+      mod_options_node:add_item(mod_options_node:create_item(nil, {
+        name = "E_" .. info.mod.name .. "options_button",
+        text_id = text_id,
+        help_id = help_id,
+        next_node = info.mod.options_menu_name,
+      }))
+    end
+  end
+
+  local base_node = nodes.video
+  for _, info in ipairs(E._options_menus) do
+    local node = deep_clone(base_node)
+    node.name = info.mod.options_menu_name
+    nodes[node.name] = node
+    node:parameters().modifier = {function(self)
+      for _, item in ipairs(self._items) do
+        local option = item:parameters().E_option
+        if option then
+          if item.TYPE == "toggle" then
+            item:set_value(E:get(option) and "on" or "off")
+          else
+            item:set_value(E:get(option))
+          end
+        end
+      end
+      return self
+    end}
+    node:parameters().refresh = node:parameters().modifier
+    node:clean_items()
+
     for i,item in ipairs(info.menu) do
-      local priority = len - i + 1
-      local menu_id = info.mod._menu_id
       if item.type == "divider" then
-        local id = "E_" .. info.mod.name .. "_item" .. tostring(i)
-        MenuHelper:AddDivider({
-          id = id,
-          size = item.size,
-          menu_id = menu_id,
-          priority = priority,
-        })
+        local name = "E_" .. info.mod.name .. "_item" .. tostring(i)
+        node:add_item(E.menu:create_divider(node, {
+          name = name,
+          size = item.size or 8,
+          no_text = true,
+        }))
+      elseif item.type == "button" then
+        local name = "E_" .. info.mod.name .. "_item" .. tostring(i)
+        node:add_item(node:create_item(nil, {
+          name = name,
+          text_id = item.text_id,
+          help_id = item.help_id,
+          callback = item.callback,
+        }))
       else
         local option = item.local_option and info.mod.name .. "_" .. item.local_option or item.option
         if not option then
           E:error("missing option name for item #" .. tostring(i) .. " in " .. info.mod.name)
         else
-          local id = "E_" .. option .. "_id"
-          local title = item.title or "E_" .. option .. "_name"
-          local desc = "E_" .. option .. "_desc"
-          if item.desc ~= nil then
-            desc = item.desc
+          local name = item.name or "E_option_" .. option
+          local text_id = item.text_id or "E_option_" .. option
+          local help_id = "E_option_" .. option .. "_help"
+          if item.help_id ~= nil then
+            help_id = item.help_id
           end
           if item.type == "slider" then
-            local slider = MenuHelper:AddSlider({
-              id = id,
-              title = title,
-              desc = desc,
-              value = E:get(option),
+            local slider = E.menu:create_slider(node, {
+              name = name,
+              text_id = text_id,
+              help_id = help_id,
               min = item.min or 1,
               max = item.max or 100,
               step = item.step or 1,
-              callback = "E_slider_option",
-              menu_id = menu_id,
-              priority = priority,
+              callback = item.callback or "E_slider_option",
+              E_option = option,
             })
-            slider.E_option = option
+            node:add_item(slider)
           elseif item.type == "toggle" then
-            local toggle = MenuHelper:AddToggle({
-              id = id,
-              title = title,
-              desc = desc,
-              value = E:get(option),
-              callback = "E_toggle_option",
-              menu_id = menu_id,
-              priority = priority,
+            local toggle = E.menu:create_toggle(node, {
+              name = name,
+              text_id = text_id,
+              help_id = help_id,
+              callback = item.callback or "E_toggle_option",
+              E_option = option,
             })
-            toggle.E_option = option
-          elseif item.type == "multiple_choice" then
-            local values, names = E:_kv_pairs(item.choices)
-            local value = table.index_of(values, E:get(option))
-            local multiple_choice = MenuHelper:AddMultipleChoice({
-              id = id,
-              title = title,
-              desc = desc,
-              items = names,
-              value = value,
-              callback = "E_multiple_choice_option",
-              menu_id = menu_id,
-              priority = priority,
+            node:add_item(toggle)
+          elseif item.type == "multi_choice" then
+            local multi_choice = E.menu:create_multi_choice(node, item.choices, {
+              name = name,
+              text_id = text_id,
+              help_id = help_id,
+              callback = item.callback or "E_multi_choice_option",
+              E_option = option,
             })
-            multiple_choice.E_option = option
-            multiple_choice.E_values = values
+            node:add_item(multi_choice)
           else
             E:error("invalid menu item type " .. tostring(item.type))
           end
         end
       end
     end
+    node:add_item(E.menu:create_back_button(node))
   end
-end)
-
-Hooks:Add("MenuManagerBuildCustomMenus", "MenuManagerBuildCustomMenus E.crosshair", function(menu_manager, nodes)
-  for _,info in ipairs(E._options_menus) do
-    nodes[info.mod._menu_id] = MenuHelper:BuildMenu(info.mod._menu_id)
-    MenuHelper:AddMenuItem(nodes.blt_options, info.mod._menu_id, "E_" .. info.mod.name .. "_menu_name", "E_" .. info.mod.name .. "_menu_desc")
-  end
-end)
-
-function MenuCallbackHandler:E_slider_option(item)
-  E:set_option(item.E_option, item:value())
-end
-function MenuCallbackHandler:E_toggle_option(item)
-  E:set_option(item.E_option, item:value() == "on")
-end
-function MenuCallbackHandler:E_multiple_choice_option(item)
-  E:set_option(item.E_option, item.E_values[item:value()])
 end
 
 -- E.MenuData = class(CoreMenuData.Data)

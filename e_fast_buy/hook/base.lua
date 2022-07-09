@@ -11,7 +11,7 @@ E:mod("fast_buy", {
       type = "toggle",
       option = "fast_buy_contract_confirm",
     },
-    { type = "divider", size = 16 },
+    { type = "divider" },
     {
       type = "toggle",
       option = "fast_buy_assets_confirm",
@@ -21,17 +21,14 @@ E:mod("fast_buy", {
       option = "fast_buy_assets_auto",
     },
   },
+  localize = {
+    E_fast_buy_options = "E: fast buy",
+    E_fast_buy_options_help = "Purchase assets faster.",
+    E_option_fast_buy_contract_confirm = "Confirm contract purchases",
+    E_option_fast_buy_contract_confirm_help = "Ask before purchasing a contract from the broker.",
+    E_option_fast_buy_assets_confirm = "Confirm asset purchases",
+    E_option_fast_buy_assets_confirm_help = "Ask before purchasing all assets for a day.",
+    E_option_fast_buy_assets_auto = "Auto-buy assets",
+    E_option_fast_buy_assets_auto_help = "Automatically purchase all assets at the briefing screen.",
+  },
 })
-
-Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_E_fast_buy", function(loc)
-  loc:add_localized_strings({
-    E_fast_buy_menu_name = "E: fast buy",
-    E_fast_buy_menu_desc = "Purchase assets faster.",
-    E_fast_buy_contract_confirm_name = "Confirm contract purchases",
-    E_fast_buy_contract_confirm_desc = "Ask before purchasing a contract from the broker.",
-    E_fast_buy_assets_confirm_name = "Confirm asset purchases",
-    E_fast_buy_assets_confirm_desc = "Ask before purchasing all assets for a day.",
-    E_fast_buy_assets_auto_name = "Auto-buy assets",
-    E_fast_buy_assets_auto_desc = "Automatically purchase all assets at the briefing screen.",
-  })
-end)

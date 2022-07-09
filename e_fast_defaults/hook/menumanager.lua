@@ -1,4 +1,4 @@
-local modify_node = MenuCrimeNetContractInitiator.modify_node
+local original_modify_node = MenuCrimeNetContractInitiator.modify_node
 function MenuCrimeNetContractInitiator:modify_node(original_node, data)
   local node = deep_clone(original_node)
   if data.customize_contract then
@@ -57,7 +57,7 @@ function MenuCrimeNetContractInitiator:modify_node(original_node, data)
     Global.game_settings.auto_kick = E:get("fast_defaults_auto_kick")
     Global.game_settings.allow_modded_players = E:get("fast_defaults_allow_modded_players")
   end
-  node = modify_node(self, node, data)
+  node = original_modify_node(self, node, data)
   if data.customize_contract then
     local one_down = E:get("fast_defaults_one_down")
     Global.game_settings.one_down = one_down

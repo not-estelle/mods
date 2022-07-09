@@ -12,12 +12,19 @@ E:mod("fast_defaults", {
     fast_defaults_difficulty_id = 8, -- sm_wish aka ds
     fast_defaults_one_down = false, -- off
   },
+  localize = {
+    E_fast_defaults_options = "E: fast defaults",
+    E_fast_defaults_options_help = "Choose default contract options.",
+    E_option_fast_defaults_difficulty_id = "Difficulty",
+    E_fast_defaults_plan_auto_stealth = "Auto (Stealth)",
+    E_fast_defaults_plan_auto_loud = "Auto (Loud)",
+  },
   options_menu = {
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_job_plan",
-      title = "menu_preferred_plan",
-      desc = false,
+      text_id = "menu_preferred_plan",
+      help_id = "menu_preferred_plan_help",
       choices = {
         {-1, "menu_any"},
         {101, "E_fast_defaults_plan_auto_loud"},
@@ -27,10 +34,10 @@ E:mod("fast_defaults", {
       },
     },
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_kick_option",
-      title = "menu_kicking_allowed_option",
-      desc = false,
+      text_id = "menu_kicking_allowed_option",
+      help_id = false,
       choices = {
         {1, "menu_kick_server"},
         {2, "menu_kick_vote"},
@@ -38,10 +45,10 @@ E:mod("fast_defaults", {
       },
     },
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_permission",
-      title = "menu_permission",
-      desc = false,
+      text_id = "menu_permission",
+      help_id = "menu_permission_help",
       choices = {
         {"public", "menu_public_game"},
         {"friends_only", "menu_friends_only_game"},
@@ -49,10 +56,10 @@ E:mod("fast_defaults", {
       },
     },
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_drop_in_option",
-      title = "menu_toggle_drop_in",
-      desc = false,
+      text_id = "menu_toggle_drop_in",
+      help_id = "menu_toggle_drop_in_help",
       choices = {
         {0, "menu_off"},
         {1, "menu_drop_in_on"},
@@ -61,10 +68,10 @@ E:mod("fast_defaults", {
       },
     },
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_team_ai_option",
-      title = "menu_toggle_ai",
-      desc = false,
+      text_id = "menu_toggle_ai",
+      help_id = false,
       choices = {
         {0, "menu_off"},
         {1, "menu_on"},
@@ -73,22 +80,22 @@ E:mod("fast_defaults", {
     {
       type = "toggle",
       option = "fast_defaults_auto_kick",
-      title = "menu_toggle_auto_kick",
-      desc = false,
+      text_id = "menu_toggle_auto_kick",
+      help_id = false,
     },
     {
       type = "toggle",
       option = "fast_defaults_allow_modded_players",
-      title = "menu_toggle_modded_players",
-      desc = false,
+      text_id = "menu_toggle_modded_players",
+      help_id = false,
     },
     { type = "divider", size = 16 },
     {
-      type = "multiple_choice",
+      type = "multi_choice",
       option = "fast_defaults_difficulty_id",
       -- en l10n has a colon after this for no reason...
-      -- title = "menu_lobby_difficulty_title",
-      desc = false,
+      -- text_id = "menu_lobby_difficulty_title",
+      help_id = false,
       choices = {
         {2, "menu_difficulty_normal"},
         {3, "menu_difficulty_hard"},
@@ -102,18 +109,8 @@ E:mod("fast_defaults", {
     {
       type = "toggle",
       option = "fast_defaults_one_down",
-      title = "menu_toggle_one_down",
-      desc = false,
+      text_id = "menu_toggle_one_down",
+      help_id = false,
     },
   },
 })
-
-Hooks:Add("LocalizationManagerPostInit", "LocalizationManagerPostInit_E_fast_defaults", function(loc)
-  loc:add_localized_strings({
-    E_fast_defaults_menu_name = "E: fast defaults",
-    E_fast_defaults_menu_desc = "Choose default contract options.",
-    E_fast_defaults_difficulty_id_name = "Difficulty",
-    E_fast_defaults_plan_auto_stealth = "Auto (Stealth)",
-    E_fast_defaults_plan_auto_loud = "Auto (Loud)",
-  })
-end)
